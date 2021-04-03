@@ -29,7 +29,7 @@ public:
 			newval = accountbal + val;
 
 
-			cout << "New balance: $" << newval;
+			cout << "\nNew balance Savings: $" << newval;
 
 		}
 
@@ -69,7 +69,19 @@ public:
 	}
 
 
+	int getbal() {
 
+
+		return accountbal;
+
+
+	}
+
+	int subbal(int val) {
+
+		return accountbal - val;
+
+	}
 
 
 
@@ -79,3 +91,66 @@ public:
 
 
 
+class Checkings : public Savings {
+
+
+private:
+	float checkaccbal = 100;
+
+
+public:
+
+	//will be able to deposit and withdraw from account
+
+
+	//added feature will be to transfer money between accounts
+
+
+	void transferToSavings(int val) {
+
+		if (val < 0) {
+
+			cout << "ERROR!" << endl;
+		}
+
+		else {
+			checkaccbal = checkaccbal - val;
+
+			cout << "Checkings: " << checkaccbal;
+			deposit(val);
+		}
+	}
+
+
+
+
+	void transferFromSavings(int val) {
+
+		int bal;
+		int newbalance;
+
+		if (val < 0) {
+
+			cout << "ERROR!" << endl;
+		}
+
+		else {
+
+			bal = getbal();
+			newbalance = val + checkaccbal;
+			int savbal = subbal(val);
+			cout << "New Checkings: " << newbalance << endl;
+			cout << "New Savings : " << savbal << endl;
+
+		}
+
+
+
+	}
+
+	
+
+
+
+
+};
